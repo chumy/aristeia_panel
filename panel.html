@@ -4,23 +4,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aristeia :: Generador Escaletas</title>
 <link rel="stylesheet" href="/aristeia/styles/random.css">
-<link rel="stylesheet" href="/aristeia/styles/panel.css">
+<link rel="stylesheet" href="/aristeia/styles/panel.css"> 
 	
 </head>
-<body onload="loadEstilos();">
+<body onload="init();">
 	<div class="center"><img class="img_center" src="/aristeia/images/aristeia_logo.png"/>
 	<h1 class="textoPortada" align="center">Generador de Escaletas</h1>
 	<div id="content">
-		<div id="estilos" class="divsfull border_blanco">
+		<div id="selEstilos" class="divsfull border_blanco">
 			<h2 class="textoPortada">Selecciona estilo:</h2>
 			<div id="estilos_disponibles"></div>
 			<div id="estilo_siguiente" class="divsfull">
-			    <button class="button" onclick="GoTo('logos')">Siguiente</button>
+			    <button class="button" onclick="GoTo('selLogos')">Siguiente</button>
 			</div>
 			
 		</div>
-		<div id="logos" class="divsfull border_blanco" style="display:none">
-			<h2 class="textoPortada">Selecciè´—n de Logos</h2>
+		<div id="selLogos" class="divsfull border_blanco" style="display:none">
+			<h2 class="textoPortada">SelecciÛn de Logos</h2>
 			<div id="logo1" class="divsfull border_verde">
 				<h3>Logo Equipo 1:</h3>
 				<input type="file" id="id1" onchange="loadComponente(this.id)">
@@ -35,16 +35,38 @@
 				<img src="" id="img_id2" alt="Image preview..." height="200" style="display:none">
 				</div>
 			</div>
-			<div id="logos_siguiente" class="divsfull">
-			    <button class="button" onclick="GoTo('selEquipos')">Siguiente</button>
+			<div class="divsfull" >
+    			<div id="logos_siguiente" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selEquipos')">Siguiente</button>
+    			</div>
+    			<div id="logos_volver" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selEstilos')">Volver</button>
+    			</div>
 			</div>
 		</div>
 		<div id="selEquipos" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Elige aristos</h2>
 	 		<button onclick="loadSelector(1)">Team 1</button>
 			<button onclick="loadSelector(2)">Team 2</button>
-			<div id="selEquipos_siguiente" class="divsfull">
-			    <button class="button" onclick="GoTo('imagen')">Siguiente</button>
+			<div class="divsfull">
+    			<div id="selEquipos_siguiente" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selVersus')">Siguiente</button>
+    			</div>
+    			<div id="logos_volver" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selLogos')">Volver</button>
+    			</div>
+			</div>
+		</div>
+		<div id="selVersus" class="divsfull border_blanco" style="display:none">
+			<h2 class="textoPortada">SelecciÛn de tipografia Vs</h2>
+			<div id="versus_disponibles"></div>
+			<div class="divsfull" >
+    			<div id="versus_siguiente" class="divsmedio">
+    			    <button class="button" onclick="GoTo('imagen')">Siguiente</button>
+    			</div>
+    			<div id="logos_volver" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selEquipos')">Volver</button>
+    			</div>
 			</div>
 		</div>
 		<div id="imagen" class="divsfull border_blanco" style="display:none">
@@ -53,7 +75,11 @@
 			<h2 class="textoPortada">Genera Escaleta</h2>
 			<span>Pulsar dos veces si no se generan los aritos</span>
 			<button onclick="updatePanel();">Generar Escaleta</button>
+			<div id="logos_volver" class="divsmedio">
+			    <button class="button" onclick="GoTo('selVersus')">Volver</button>
+			</div>
 		</div>
+		
 		<div id="myCanvas" class="divsfull border_blanco"  style="display:none">
 		        
 				<h2><a id="download" download="encuentro.png">
@@ -67,6 +93,9 @@
 		<div class="modal-content" id="selEquipos">
 			<span class="close" id="spanModal" onClick="ocultar('myModal');">&times;</span>
 			<div id="equipos"></div>
+			<div id="modal_ok" class="divsfull">
+			    <button class="button" onclick="ocultar('myModal');">Aceptar</button>
+			</div>
 			
 		</div>
 	</div>
