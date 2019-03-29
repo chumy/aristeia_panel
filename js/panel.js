@@ -11,7 +11,7 @@ var versus;
 var selEquipo1=[];
 var selEquipo2=[];
 var secciones=["selEstilos","selLogos","selEquipos","selVersus","imagen","myCanvas"];
-var rutaImg = '/aristeia/images/'
+var rutaImg = '/images/'
 
 
 var posVersus = [{image: rutaImg + "vs_1.png", h:250, w:250},
@@ -100,7 +100,9 @@ var Aristos = [ {Id:1, Name:"Mushashi", Image:"mushashi.png"},
 {Id:21, Name:"Oberon", Image:"oberon.png"},
 {Id:22, Name:"Shona Carano", Image:"shona.png"},
 {Id:23, Name:"Reina Koorie", Image:"koorie.png"},
-{Id:24, Name:"Final Boss", Image:"boss.png"} ];
+{Id:24, Name:"Final Boss", Image:"boss.png"} ,
+{Id:25, Name:"Bachmann", Image:"bachmann.png"} ,
+{Id:26, Name:"Hammerhead", Image:"hammerhead.png"} ,];
 
 
 //Visible
@@ -269,6 +271,9 @@ function addAristoTeam(id, team){
     
   	if (lista.indexOf(id) < 0) 
     	lista.push(id);
+    else{
+        lista.splice(lista.indexOf(id),1);
+    }
     
     while (lista.length > 4){
         lista.shift();    
