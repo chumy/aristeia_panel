@@ -11,7 +11,7 @@ var versus;
 var selEquipo1=[];
 var selEquipo2=[];
 var secciones=["selEstilos","selLogos","selEquipos","selVersus","imagen","myCanvas"];
-var rutaImg = '/images/'
+var rutaImg = 'images/'
 
 
 var posVersus = [{image: rutaImg + "vs_1.png", h:250, w:250},
