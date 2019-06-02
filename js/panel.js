@@ -282,9 +282,10 @@ function selectFondo(id){
             imgA.className = 'nonSelected';
     }
     //eliminamos el fondo
-    document.getElementById('img_id3').src="";
-    ocultar('img_id3');
+    document.getElementById('img_id3').src=posFondos[fondo].image;
+    ver('img_id3');
     document.getElementById('id3').value="";
+
 }
 
 function setPunt1(id){
