@@ -37,10 +37,30 @@
 			</div>
 			<div class="divsfull" >
     			<div id="logos_siguiente" class="divsmedio">
-    			    <button class="button" onclick="GoTo('selEquipos')">Siguiente</button>
+    			    <button class="button" onclick="GoTo('selBackground')">Siguiente</button>
     			</div>
     			<div id="logos_volver" class="divsmedio">
     			    <button class="button" onclick="GoTo('selEstilos')">Volver</button>
+    			</div>
+			</div>
+		</div>
+		<div id="selBackground" class="divsfull border_blanco" style="display:none">
+			<h2 class="textoPortada">Selección de fondo</h2>
+			<div id="fondos_disponibles"></div>
+			<div id="background" class="divsfull border_naranja">
+			<h3>Fondo (redimensionado a 1280x800) </h3>
+			<input type="file" id="id3" onchange="loadComponente(this.id)">
+			<div id="div_img_3" class="divsfull">
+			<img src="" id="img_id3" alt="Image preview..." height="200" style="display:none">
+			</div>
+			
+			</div>
+			<div class="divsfull" >
+    			<div id="background_siguiente" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selEquipos')">Siguiente</button>
+    			</div>
+    			<div id="logos_volver" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selLogos')">Volver</button>
     			</div>
 			</div>
 		</div>
@@ -53,13 +73,100 @@
     			    <button class="button" onclick="GoTo('selVersus')">Siguiente</button>
     			</div>
     			<div id="logos_volver" class="divsmedio">
-    			    <button class="button" onclick="GoTo('selLogos')">Volver</button>
+    			    <button class="button" onclick="GoTo('selBackground')">Volver</button>
     			</div>
 			</div>
 		</div>
 		<div id="selVersus" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Selección de tipografia Vs</h2>
 			<div id="versus_disponibles"></div>
+			<div class="divsfull" >
+    			<div id="versus_siguiente" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selPuntuacion')">Siguiente</button>
+    			</div>
+    			<div id="logos_volver" class="divsmedio">
+    			    <button class="button" onclick="GoTo('selEquipos')">Volver</button>
+    			</div>
+			</div>
+		</div>
+		<div id="selPuntuacion" class="divsfull border_blanco" style="display:none">
+			<h2 class="textoPortada">Puntuación</h2>
+			<div id="puntuaciones_disponibles">
+				<div class="divsmedio" >
+    			<span>Equipo 1</span>
+    			<span>Puntuacion:
+    			<select id='punt1' onchange="setPunt1(this[this.selectedIndex].value);">
+    				<option value="-1">Seleccionar</option>
+    				<option value="0">0</option>
+    				<option value="1">1</option>
+    				<option value="2">2</option>
+    				<option value="3">3</option>
+    				<option value="4">4</option>
+    				<option value="5">5</option>
+    				<option value="6">6</option>
+    				<option value="7">7</option>
+    				<option value="8">8</option>
+    				<option value="9">9</option>
+    				<option value="10">10</option>
+    				<option value="11">11</option>
+    				<option value="12">12</option>
+    			</select></span>
+    			<span>Frags:
+    			<select id='frag1' onchange="setFrag1(this[this.selectedIndex].value);">
+    				<option value="-1">Seleccionar</option>
+    				<option value="0">0</option>
+    				<option value="1">1</option>
+    				<option value="2">2</option>
+    				<option value="3">3</option>
+    				<option value="4">4</option>
+    				<option value="5">5</option>
+    				<option value="6">6</option>
+    				<option value="7">7</option>
+    				<option value="8">8</option>
+    				<option value="9">9</option>
+    				<option value="10">10</option>
+    				<option value="11">11</option>
+    				<option value="12">12</option>
+    			</select></span>
+    			</div>
+    			<div class="divsmedio" >
+    			<span>Equipo 2</span>
+    			<span>Puntuacion:
+    			<select id='punt2' onchange="setPunt2(this[this.selectedIndex].value);">
+    				<option value="-1">Seleccionar</option>
+    				<option value="0">0</option>
+    				<option value="1">1</option>
+    				<option value="2">2</option>
+    				<option value="3">3</option>
+    				<option value="4">4</option>
+    				<option value="5">5</option>
+    				<option value="6">6</option>
+    				<option value="7">7</option>
+    				<option value="8">8</option>
+    				<option value="9">9</option>
+    				<option value="10">10</option>
+    				<option value="11">11</option>
+    				<option value="12">12</option>
+    			</select></span>
+    			<span>Frags:
+    			<select id='frag2' onchange="setFrag2(this[this.selectedIndex].value);">
+    				<option value="-1">Seleccionar</option>
+    				<option value="0">0</option>
+    				<option value="1">1</option>
+    				<option value="2">2</option>
+    				<option value="3">3</option>
+    				<option value="4">4</option>
+    				<option value="5">5</option>
+    				<option value="6">6</option>
+    				<option value="7">7</option>
+    				<option value="8">8</option>
+    				<option value="9">9</option>
+    				<option value="10">10</option>
+    				<option value="11">11</option>
+    				<option value="12">12</option>
+    			</select></span>
+    			</div>
+			</div>
 			<div class="divsfull" >
     			<div id="versus_siguiente" class="divsmedio">
     			    <button class="button" onclick="GoTo('imagen')">Siguiente</button>
@@ -76,7 +183,7 @@
 			<span>Pulsar dos veces si no se generan los aritos</span>
 			<button onclick="updatePanel();">Generar Escaleta</button>
 			<div id="logos_volver" class="divsmedio">
-			    <button class="button" onclick="GoTo('selVersus')">Volver</button>
+			    <button class="button" onclick="GoTo('selPuntuacion')">Volver</button>
 			</div>
 		</div>
 		

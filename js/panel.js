@@ -7,10 +7,16 @@ var logo2;
 var modal;
 var estilo;
 var versus;
+var fondo;
+
+var frag1=-1;
+var frag2=-1;
+var punt1=-1;
+var punt2=-1;
 
 var selEquipo1=[];
 var selEquipo2=[];
-var secciones=["selEstilos","selLogos","selEquipos","selVersus","imagen","myCanvas"];
+var secciones=["selEstilos","selLogos","selBackground","selEquipos","selVersus","selPuntuacion","imagen","myCanvas"];
 var rutaImg = 'images/'
 
 
@@ -19,49 +25,63 @@ var posVersus = [{image: rutaImg + "vs_1.png", h:250, w:250},
                 {image: rutaImg + "vs_3.png", h:250, w:250},
                 ];
 
+var posFondos = [{image: rutaImg + "back_1.png", h:480, w:300},
+                {image: rutaImg + "back_2.png", h:480, w:300},
+                {image: rutaImg + "back_3.png", h:480, w:300},
+                {image: rutaImg + "back_4.png", h:480, w:300},
+                ];
+
 var posEstilos = [ {
-                    back : {image: rutaImg + "back_1.png", x:0,y:0,h:1280,w:840}, 
+                    back : {image: rutaImg + "estilo_1.png", x:0,y:0,h:1280,w:800}, 
                     imgPref:"", 
-                    logo1 : {x:40, y:400, h:400, w:400} ,
-                    logo2 :{x:840, y:40, h:400, w:400},
-                    vs : {x:515, y:290, h:250, w:250},
-                    team1 : {x:40, y:50, h:135, w:117, gapx:0, gapy:0 },
-                    team2 : {x:760, y:660, h:135, w:117, gapx:0, gapy:0 },
-                    orden : ['Aristos','Logos','Versus'],
+                    logo1 : {x:228, y:600, h:380, w:380} ,
+                    logo2 :{x:1052, y:200, h:380, w:380},
+                    vs : {x:640, y:400, h:250, w:250},
+                    team1 : {x:115, y:100, h:174, w:150, gapx:0, gapy:0 },
+                    team2 : {x:715, y:700, h:174, w:150, gapx:0, gapy:0 },
+                    punt1 : {x:120, y:280, h:105, w:148, gapx:-20, gapy:0 },
+                    punt2 : {x:910, y:520, h:105, w:148, gapx:-20, gapy:0 },
+                    orden : ['Aristos','Logos','Versus','Puntuacion'],
                 },
                 
                  {
-                    back : {image: rutaImg + "back_2.png", x:0,y:0,h:1000,w:563}, 
+                    back : {image: rutaImg + "estilo_2.png", x:0,y:0,h:1280,w:800}, 
                     imgPref:"", 
-                    logo1 : {x:19, y:14, h:350, w:350} ,
-                    logo2 :{x:620, y:188, h:350, w:350},
-                    vs : {x:370, y:150, h:250, w:250},
+                    logo1 : {x:240, y:400, h:380, w:380} ,
+                    logo2 :{x:1040, y:400, h:380, w:380},
+                    vs : {x:640, y:400, h:250, w:250},
                     team1 : {x:20, y:50, h:0, w:0, gapx:0, gapy:0 },
                     team2 : {x:500, y:500, h:0, w:0, gapx:0, gapy:0 },
-                    orden : ['Aristos','Logos','Versus'],
+                    punt1 : {x:120, y:680, h:105, w:148, gapx:-20, gapy:0 },
+                    punt2 : {x:910, y:680, h:105, w:148, gapx:-20, gapy:0 },
+                    orden : ['Logos','Versus','Puntuacion'],
 
                 },
                 {
-                    back : {image: rutaImg + "back_3.png", x:0,y:0,h:1280,w:840}, 
+                    back : {image: rutaImg + "estilo_3.png", x:0,y:0,h:1280,w:800}, 
                     imgPref:"dia_", 
-                    logo1 : {x:9, y:23, h:400, w:400} ,
-                    logo2 :{x:870, y:420, h:400, w:400},
-                    vs : {x:500, y:220, h:350, w:350},
-                    team1 : {x:424, y:47, h:300, w:270, gapx:-94, gapy:0 },
-                    team2 : {x:48, y:489, h:300, w:270, gapx:-94, gapy:0 },
-                    front : {image: rutaImg + "back_3_2.png", x:0,y:0,w:1280,h:840}, 
-                    orden : ['Aristos','Front', 'Logos','Versus'],
+                    logo1 : {x:209, y:200, h:380, w:380} ,
+                    logo2 :{x:1070, y:600, h:380, w:380},
+                    vs : {x:640, y:400, h:350, w:350},
+                    team1 : {x:558, y:200, h:316, w:287, gapx:-110, gapy:0 },
+                    team2 : {x:180, y:600, h:316, w:287, gapx:-110, gapy:0 },
+                    punt1 : {x:280, y:400, h:63, w:88, gapx:-20, gapy:0 },
+                    punt2 : {x:880, y:400, h:63, w:88, gapx:-20, gapy:0 },
+                    orden : ['Logos','Aristos','Versus','Puntuacion'],
                 },
                 {
-                    back : {image: rutaImg + "back_4.png", x:0,y:0,h:1280,w:840}, 
+                    back : {image: rutaImg + "estilo_4.png", x:0,y:0,h:1280,w:800}, 
                     imgPref:"pinups/pinup_", 
-                    logo1 : {x:40, y:240, h:400, w:400} ,
-                    logo2 :{x:870, y:240, h:400, w:400},
-                    vs : {x:515, y:290, h:250, w:250},
-                    team1 : {x: -90, y:0, h:415, w:325, gapx:-180, gapy:0 },
-                    team2 : {x: 640, y:0, h:415, w:325, gapx:-180, gapy:0 },
-                    orden : ['Aristos','Logos','Versus'],
+                    logo1 : {x:260, y:420, h:380, w:380} ,
+                    logo2 :{x:1020, y:420, h:380, w:380},
+                    vs : {x:640, y:420, h:250, w:250},
+                    team1 : {x: 104, y:210, h:415, w:325, gapx:-220, gapy:0 },
+                    team2 : {x: 880, y:210, h:415, w:325, gapx:-220, gapy:0 },
+                    punt1 : {x:120, y:700, h:105, w:148, gapx:-20, gapy:0 },
+                    punt2 : {x:910, y:700, h:105, w:148, gapx:-20, gapy:0 },
+                    orden : ['Aristos','Logos','Versus','Puntuacion'],
                 },
+               
                 ]
 
 var Aristos = [ {Id:1, Name:"Mushashi", Image:"mushashi.png"},
@@ -152,6 +172,25 @@ function loadEstilos(){
     
 }
 
+function loadPuntaciones(){
+    let div=document.getElementById('puntuaciones_disponibles');
+    
+    for (var i=0;i<posEstilos.length;i++)
+    {
+        let div_img = document.createElement('div');
+        div_img.setAttribute('class','divsmedio');
+        let imgA = document.createElement('img');
+        imgA.src=posEstilos[i].back.image;
+        imgA.id="estilo_"+i
+        imgA.setAttribute('width','50%');
+        imgA.setAttribute('onclick', 'selectEstilo('+i+');');
+        imgA.setAttribute('class', 'nonSelected');
+        div_img.appendChild(imgA);
+        div.appendChild(div_img);
+    }
+    
+}
+
 function loadVersus(){
     let div=document.getElementById('versus_disponibles');
     
@@ -171,9 +210,29 @@ function loadVersus(){
     
 }
 
+function loadFondos(){
+    let div=document.getElementById('fondos_disponibles');
+    
+    for (var i=0;i<posFondos.length;i++)
+    {
+        let div_img = document.createElement('div');
+        div_img.setAttribute('class','divsmedio');
+        let imgA = document.createElement('img');
+        imgA.src=posFondos[i].image;
+        imgA.id="fondo_"+i
+        imgA.setAttribute('width','30%');
+        imgA.setAttribute('onclick', 'selectFondo('+i+');');
+        imgA.setAttribute('class', 'nonSelected');
+        div_img.appendChild(imgA);
+        div.appendChild(div_img);
+    }
+    
+}
+
 function init(){
     loadEstilos();
     loadVersus();
+    loadFondos();
 }
 
 //Seleccion de estilo
@@ -195,7 +254,7 @@ function selectEstilo(id){
 
 function selectVersus(id){
 	versus = id;
-		for(var i=0;i<posVersus.length;i++)
+	for(var i=0;i<posVersus.length;i++)
 	{
 	    let imgA=document.getElementById("versus_"+i);
 	    if (i==id)
@@ -204,6 +263,38 @@ function selectVersus(id){
 	        imgA.className = 'nonSelected';
 	}
 	
+}
+
+function selectFondo(id){
+    fondo = id;
+    for(var i=0;i<posFondos.length;i++)
+    {
+        let imgA=document.getElementById("fondo_"+i);
+        if (i==id)
+            imgA.className ='selected';
+        else
+            imgA.className = 'nonSelected';
+    }
+    //eliminamos el fondo
+    document.getElementById('img_id3').src="";
+    ocultar('img_id3');
+    document.getElementById('id3').value="";
+}
+
+function setPunt1(id){
+    punt1 = id;
+}
+
+function setFrag1(id){
+    frag1 = id;
+}
+
+function setPunt2(id){
+    punt2 = id;
+}
+
+function setFrag2(id){
+    frag2 = id;
 }
 
 function preloadImages(id){
@@ -233,8 +324,6 @@ function loadSelector(team){
     {
         let imgA = document.createElement('img');
         imgA.src=rutaImg + Aristos[i].Image;
-        //imgA.width  = 117;
-        //imgA.height = 135;
         imgA.setAttribute('onclick', 'addAristoTeam('+i+', '+team+');');
         imgA.setAttribute('class', 'nonSelected');
         
@@ -300,10 +389,10 @@ function loadCanvas(id) {
     else
        canvas = document.getElementById('CanvasLayer');
     
-    canvas.width  = posEstilos[estilo].back.h + 1;
-    canvas.height = posEstilos[estilo].back.w + 1;
+    canvas.width  = posEstilos[estilo].back.h;
+    canvas.height = posEstilos[estilo].back.w;
     canvas.style.zIndex   = 8;
-    canvas.style.border   = "1px solid";
+    //canvas.style.border   = "1px solid";
     canvas.context = canvas.getContext("2d");
     
 	return canvas;
@@ -312,7 +401,9 @@ function loadCanvas(id) {
 function cleanCanvas() {
     let canvas1=document.getElementById('CanvasLayer');
     let ctx=canvas1.getContext("2d");
-    ctx.clearRect(0, 0, canvas1.width, canvas1.height);
+    //ctx.clearRect(0, 0, canvas1.width, canvas1.height);
+    ctx.clearRect(0, 0, myCanvasArea.width, myCanvasArea.height);
+
 }
 
 // Carga un componente en el canvas
@@ -355,8 +446,9 @@ function component(width, height, color, x, y, type) {
 //Actualizar el canvas
 function updatePanel() {  
     cleanCanvas() ;
-    myBackground = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, posEstilos[estilo].back.image, posEstilos[estilo].back.x, posEstilos[estilo].back.y, "image");
-    myBackground.update();
+
+    drawFondo();
+
     for (var i=0;i<posEstilos[estilo].orden.length;i++)
     {
         switch(posEstilos[estilo].orden[i]) {
@@ -372,12 +464,12 @@ function updatePanel() {
             case 'Front':
                 drawFront();
                 break; 
+            case 'Puntuacion':
+                drawPuntuacion();
+                break; 
         }
     
     }
-	//drawLogos();
-	//drawAristos();
-	//drawVersus();
 
 	ver('myCanvas');
 	ocultar('equipos');
@@ -385,36 +477,137 @@ function updatePanel() {
 	
 }
 
+function drawFondo(){
+    let logo;
+    let preview;
+    let x,y;
+
+    preview = document.getElementById('img_id3'); 
+  
+    //Seleccionamos la img del equipo
+    if (preview.src.length > 1000)
+    {
+        logo = new Image();
+        logo.src = preview.src;
+        logo1 = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, logo, posEstilos[estilo].back.x, posEstilos[estilo].back.x, "file");
+        logo1.update();
+    }
+    else
+    {
+        //Seleccion predefinida 
+        if(fondo < 0){
+            fondo = estilo;
+        }
+
+        myBackground = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, posFondos[fondo].image, posEstilos[estilo].back.x, posEstilos[estilo].back.y, "image");
+        myBackground.update();
+    }
+
+}
+
 //Carga Versus en el canvas
 function drawVersus(){
-
-    let versusComponent;
-    versusComponent = new component(posEstilos[estilo].vs.w, posEstilos[estilo].vs.h, posVersus[versus].image, posEstilos[estilo].vs.x, posEstilos[estilo].vs.y, "image");
-    versusComponent.update();
+    if (versus > -1)
+    {
+        let versusComponent;
+        let x,y;
+        x=posEstilos[estilo].vs.x - posEstilos[estilo].vs.w / 2;
+        y=posEstilos[estilo].vs.y - posEstilos[estilo].vs.h / 2; 
+        versusComponent = new component(posEstilos[estilo].vs.w, posEstilos[estilo].vs.h, posVersus[versus].image, x, y, "image");
+        versusComponent.update();
+    }
 }
 
 
 //Carga Aristos en el canvas
 function drawAristos (){
     
-    let aristo;
-    
-    for (var i=1;i<=selEquipo1.length;i++){
-        j=i%selEquipo2.length; //Posicionar al primero encima
-        pos=j* (posEstilos[estilo].team1.w + posEstilos[estilo].team1.gapx) + posEstilos[estilo].team1.x;
-        let temp = new component(posEstilos[estilo].team1.w, posEstilos[estilo].team1.h, rutaImg + posEstilos[estilo].imgPref + Aristos[selEquipo1[j]].Image, pos, posEstilos[estilo].team1.y, "image");
-        temp.update();
+    let aristo,x,y;
+
+    if (selEquipo1.length > 0) 
+    {
+        for (var i=0;i<selEquipo1.length;i++){
+            j=i%selEquipo1.length; //Posicionar al primero encima
+            j=i;
+            x = posEstilos[estilo].team1.x - posEstilos[estilo].team1.w / 2 ;
+            y = posEstilos[estilo].team1.y - posEstilos[estilo].team1.h / 2 ;
+            pos=j* (posEstilos[estilo].team1.w + posEstilos[estilo].team1.gapx) + x;
+            let temp = new component(posEstilos[estilo].team1.w, posEstilos[estilo].team1.h, rutaImg + posEstilos[estilo].imgPref + Aristos[selEquipo1[j]].Image, pos, y, "image");
+            temp.update();
+        }
+    }
+
+    if (selEquipo2.length > 0) 
+    {
+        for (var i=0;i<selEquipo2.length;i++){
+            j=i%selEquipo2.length;
+            j=i;
+            x = posEstilos[estilo].team2.x - posEstilos[estilo].team2.w / 2 ;
+            y = posEstilos[estilo].team2.y - posEstilos[estilo].team2.h / 2 ;
+            pos=j*(posEstilos[estilo].team2.w + posEstilos[estilo].team2.gapx) + x;
+
+            let temp = new component(posEstilos[estilo].team2.w, posEstilos[estilo].team2.h, rutaImg + posEstilos[estilo].imgPref +  Aristos[selEquipo2[j]].Image, pos, y, "image");
+            temp.update();       
+        }
     }
     
-    for (var i=1;i<=selEquipo2.length;i++){
-        j=i%selEquipo2.length;
-        pos=j*(posEstilos[estilo].team2.w + posEstilos[estilo].team2.gapx) + posEstilos[estilo].team2.x;
-        let temp = new component(posEstilos[estilo].team2.w, posEstilos[estilo].team2.h, rutaImg + posEstilos[estilo].imgPref +  Aristos[selEquipo2[j]].Image, pos, posEstilos[estilo].team2.y, "image");
-        temp.update();
-        
-        
+}
+
+//puntuacion
+function drawPuntuacion(){
+    let puntComponent,x,y;
+    if (punt1 > -1)
+    {
+        let imagen = rutaImg + punt1 + '.png';
+        x = posEstilos[estilo].punt1.x - posEstilos[estilo].punt1.w / 2 ;
+        y = posEstilos[estilo].punt1.y - posEstilos[estilo].punt1.h / 2 ;
+        puntComponent = new component(posEstilos[estilo].punt1.w, posEstilos[estilo].punt1.h, imagen, x, y, "image");
+        puntComponent.update();
+        if (frag1 > -1)
+        {
+            // Guion
+            x = posEstilos[estilo].punt1.x - posEstilos[estilo].punt1.w / 2 ;
+            y = posEstilos[estilo].punt1.y - posEstilos[estilo].punt1.h / 2 ;
+            pos=(posEstilos[estilo].punt1.w + posEstilos[estilo].punt1.gapx) + x;
+            puntComponent = new component(posEstilos[estilo].punt1.w, posEstilos[estilo].punt1.h, rutaImg  + 'guion.png', pos, y, "image");
+            puntComponent.update();
+
+            // frags
+            let frags = rutaImg + frag1 + '_rojo.png';
+            x = posEstilos[estilo].punt1.x - posEstilos[estilo].punt1.w / 2 ;
+            y = posEstilos[estilo].punt1.y - posEstilos[estilo].punt1.h / 2 ;
+            pos=2*(posEstilos[estilo].punt1.w + posEstilos[estilo].punt1.gapx) + x;
+            puntComponent = new component(posEstilos[estilo].punt1.w, posEstilos[estilo].punt1.h, frags, pos, y, "image");
+            puntComponent.update();
+        }
     }
-    
+
+    if (punt2 > -1)
+    {
+        let imagen = rutaImg + punt2 + '.png';
+        x = posEstilos[estilo].punt2.x - posEstilos[estilo].punt2.w / 2 ;
+        y = posEstilos[estilo].punt2.y - posEstilos[estilo].punt2.h / 2 ;
+        puntComponent = new component(posEstilos[estilo].punt2.w, posEstilos[estilo].punt2.h, imagen, x, y, "image");
+        puntComponent.update();
+        if (frag2 > -1)
+        {
+            // Guion
+            x = posEstilos[estilo].punt2.x - posEstilos[estilo].punt2.w / 2 ;
+            y = posEstilos[estilo].punt2.y - posEstilos[estilo].punt2.h / 2 ;
+            pos=(posEstilos[estilo].punt2.w + posEstilos[estilo].punt2.gapx) + x;
+            puntComponent = new component(posEstilos[estilo].punt2.w, posEstilos[estilo].punt2.h, rutaImg  + 'guion.png', pos, y, "image");
+            puntComponent.update();
+
+            // frags
+            let frags = rutaImg + frag2 + '_rojo.png';
+            x = posEstilos[estilo].punt2.x - posEstilos[estilo].punt2.w / 2 ;
+            y = posEstilos[estilo].punt2.y - posEstilos[estilo].punt2.h / 2 ;
+            pos=2*(posEstilos[estilo].punt2.w + posEstilos[estilo].punt2.gapx) + x;
+            puntComponent = new component(posEstilos[estilo].punt2.w, posEstilos[estilo].punt2.h, frags, pos, y, "image");
+            puntComponent.update();
+        }
+    }
+
 }
 
 //Carga Versus en el canvas
@@ -431,21 +624,26 @@ function drawLogos(){
 
     let logo;
     let preview;
+    let x,y;
     preview = document.getElementById('img_id1'); //Seleccionamos la img del equipo
-    if (preview.src !== null)
+    if (preview.src !== '')
     {
   	    logo = new Image();
 	    logo.src = preview.src;
-	    logo1 = new component(posEstilos[estilo].logo1.w, posEstilos[estilo].logo1.h, logo, posEstilos[estilo].logo1.x, posEstilos[estilo].logo1.y, "file");
+        x=posEstilos[estilo].logo1.x - posEstilos[estilo].logo1.w / 2;
+        y=posEstilos[estilo].logo1.y - posEstilos[estilo].logo1.h / 2;
+	    logo1 = new component(posEstilos[estilo].logo1.w, posEstilos[estilo].logo1.h, logo, x, y, "file");
 	    logo1.update();
     }
     
 	preview = document.getElementById('img_id2'); //Seleccionamos la img del equipo
-	if (preview.src !== null)
+	if (preview.src !== '')
     {
       	logo = new Image();
     	logo.src = preview.src;
-    	logo2 = new component(posEstilos[estilo].logo2.w, posEstilos[estilo].logo2.h, logo, posEstilos[estilo].logo2.x, posEstilos[estilo].logo2.y,"file");
+        x=posEstilos[estilo].logo2.x - posEstilos[estilo].logo2.w / 2;
+        y=posEstilos[estilo].logo2.y - posEstilos[estilo].logo2.h / 2;
+    	logo2 = new component(posEstilos[estilo].logo2.w, posEstilos[estilo].logo2.h, logo, x, y,"file");
     	logo2.update();
     }
 }
