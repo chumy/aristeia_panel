@@ -40,9 +40,16 @@ button {
 }
 
 .button:hover {
-    border-radius: 12px;
+  border-radius: 12px;
   border: 2px solid #800000;
   background-color: #e7e7e7; 
+  color: black;
+}
+.button:disabled ,
+button[disabled]{
+  border-radius: 12px;
+  border: 2px solid #800000;
+  background-color: #a6a6a6; /* grey */
   color: black;
 }
 

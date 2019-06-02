@@ -169,7 +169,9 @@ function loadEstilos(){
         div_img.appendChild(imgA);
         div.appendChild(div_img);
     }
-    
+
+    //Forzamos el boton deshabilitado
+    document.getElementById("btnEstilo").disabled = true;
 }
 
 function loadPuntaciones(){
@@ -249,6 +251,7 @@ function selectEstilo(id){
 	        imgA.className = 'nonSelected';
 	}
 	startPanel();
+    document.getElementById("btnEstilo").disabled = false;
 	//preloadImages(id);
 }
 
@@ -654,19 +657,23 @@ function loadComponente( team ){
    let file    = document.getElementById(team).files[0]; //Seleccionamos el fichero del img
    let reader  = new FileReader();
 
-	reader.onloadend = function () {
-	   this.image = new Image();
-	   this.image.src = reader.result;
-	   preview.src = reader.result;
-   }
-
-   if (file) {
-	   reader.readAsDataURL(file); //reads the data as a URL
-	   ver('img_'+team);
-   } else {
-	   preview.src = "";
-   }
-	
+   //check Extension
+    if (fileValidation(file))
+    {
+    	reader.onloadend = function () {
+    	   this.image = new Image();
+    	   this.image.src = reader.result;
+    	   preview.src = reader.result;
+       }
+       if (file) {
+    	   reader.readAsDataURL(file); //reads the data as a URL
+    	   ver('img_'+team);
+       } else {
+    	   preview.src = "";
+       }
+    }else{
+        document.getElementById(team).value="";
+    }
 }
 
 //************************//
@@ -683,3 +690,13 @@ download.setAttribute("href", image);
 
 
 
+function fileValidation(filename){
+   
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+    if(!allowedExtensions.exec(filename)){
+        alert('Please upload file having extensions .jpeg/.jpg/.png/.gif only.');
+        return false;
+    }else{
+       return true;
+    }
+}
