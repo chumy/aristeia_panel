@@ -11,6 +11,9 @@
 	<div class="center"><img class="img_center" src="images/aristeia_logo.png"/>
 	<h1 class="textoPortada" align="center">Generador de Paneles</h1>
 	<div id="content">
+
+<!-- ESTILOS -->
+
 		<div id="selEstilos" class="divsfull border_blanco">
 			<h2 class="textoPortada">Selecciona estilo:</h2>
 			<div id="estilos_disponibles"></div>
@@ -19,18 +22,33 @@
 			</div>
 			
 		</div>
+
+<!-- LOGOS -->
+
 		<div id="selLogos" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Selección de Logos</h2>
 			<div id="logo1" class="divsfull border_verde">
-				<h3>Logo Equipo 1:</h3>
-				<input type="file" id="id1" onchange="loadComponente(this.id)">
+				<div id="logo1_file" class="divsmedio"> 
+					<h3>Logo Equipo 1:</h3>
+					<input type="file" id="id1" onchange="loadComponente(this.id)">
+				</div>
+				<div id="logo1_selector" class="divsmedio"> 
+					<h2 class="textoPortada">Elige Logos Guardados</h2>
+	 					<button onclick="loadLogos(1)">Logos Disponibles</button>
+				</div>
 				<div id="div_img_1" class="divsfull">
 				<img src="" id="img_id1" height="200" alt="Image preview..."  style="display:none">
 				</div>
 			</div>
 			<div id="logo2" class="divsfull border_naranja">
+				<div id="logo2_file" class="divsmedio"> 
 				<h3>Logo Equipo 2:</h3>
 				<input type="file" id="id2" onchange="loadComponente(this.id)">
+				</div>
+				<div id="logo2_selector" class="divsmedio"> 
+					<h2 class="textoPortada">Elige Logos Guardados</h2>
+	 					<button onclick="loadLogos(2)">Logos Disponibles</button>
+				</div>
 				<div id="div_img_2" class="divsfull">
 				<img src="" id="img_id2" alt="Image preview..." height="200" style="display:none">
 				</div>
@@ -44,6 +62,9 @@
     			</div>
 			</div>
 		</div>
+
+<!-- BACKGROUND -->
+
 		<div id="selBackground" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Selección de fondo</h2>
 			<div id="fondos_disponibles"></div>
@@ -64,6 +85,9 @@
     			</div>
 			</div>
 		</div>
+
+<!-- EQUIPOS -->
+
 		<div id="selEquipos" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Elige aristos</h2>
 	 		<button onclick="loadSelector(1)">Team 1</button>
@@ -77,6 +101,9 @@
     			</div>
 			</div>
 		</div>
+
+<!-- VERSUS -->
+
 		<div id="selVersus" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Selección de tipografia Vs</h2>
 			<div id="versus_disponibles"></div>
@@ -89,6 +116,9 @@
     			</div>
 			</div>
 		</div>
+
+<!-- PUNTUACION -->
+
 		<div id="selPuntuacion" class="divsfull border_blanco" style="display:none">
 			<h2 class="textoPortada">Puntuación</h2>
 			<div id="puntuaciones_disponibles">
@@ -176,6 +206,9 @@
     			</div>
 			</div>
 		</div>
+
+<!-- IMAGEN -->
+
 		<div id="imagen" class="divsfull border_blanco" style="display:none">
 			<!--h2 class="textoPortada">Descarga Imagen</h2>
 			<a id="download" download="encuentro.png"><button onclick="updatePanel()">Generar Panel</button></a-->
@@ -194,16 +227,18 @@
 				</a></h2>
 		</div>
 	</div>
+
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 		<!-- Modal content -->
-		<div class="modal-content" id="selEquipos">
+		<div class="modal-content" id="idModal">
 			<span class="close" id="spanModal" onClick="ocultar('myModal');">&times;</span>
-			<div id="equipos"></div>
-			<div id="modal_ok" class="divsfull">
-			    <button class="button" onclick="ocultar('myModal');">Aceptar</button>
+			<div id="modalContent">
+				
 			</div>
-			
+			<div id="modal_ok" class="divsfull">
+				    <button class="button" onclick="ocultar('myModal');">Aceptar</button>
+			</div>
 		</div>
 	</div>
 	</div>
