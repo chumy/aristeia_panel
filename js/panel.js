@@ -1,5 +1,4 @@
 
-
 var myCanvasArea;
 var myBackground;
 var logo1;
@@ -21,100 +20,6 @@ var rutaImg = 'images/';
 var rutaLogo = rutaImg + 'logos/';
 
 
-var posVersus = [{image: rutaImg + "vs_1.png", h:250, w:250},
-                {image: rutaImg + "vs_2.png", h:250, w:250},
-                {image: rutaImg + "vs_3.png", h:250, w:250},
-                ];
-
-var posFondos = [{image: rutaImg + "back_1.png", h:480, w:300},
-                {image: rutaImg + "back_2.png", h:480, w:300},
-                {image: rutaImg + "back_3.png", h:480, w:300},
-                {image: rutaImg + "back_4.png", h:480, w:300},
-                ];
-
-var posEstilos = [ {
-                    back : {image: rutaImg + "estilo_1.png", x:0,y:0,h:1280,w:800}, 
-                    imgPref:"", 
-                    logo1 : {x:228, y:600, h:380, w:380} ,
-                    logo2 :{x:1052, y:200, h:380, w:380},
-                    vs : {x:640, y:400, h:250, w:250},
-                    team1 : {x:115, y:100, h:174, w:150, gapx:0, gapy:0 },
-                    team2 : {x:715, y:700, h:174, w:150, gapx:0, gapy:0 },
-                    punt1 : {x:120, y:280, h:105, w:148, gapx:-20, gapy:0 },
-                    punt2 : {x:910, y:520, h:105, w:148, gapx:-20, gapy:0 },
-                    orden : ['Aristos','Logos','Versus','Puntuacion'],
-                },
-                
-                 {
-                    back : {image: rutaImg + "estilo_2.png", x:0,y:0,h:1280,w:800}, 
-                    imgPref:"", 
-                    logo1 : {x:240, y:400, h:380, w:380} ,
-                    logo2 :{x:1040, y:400, h:380, w:380},
-                    vs : {x:640, y:400, h:250, w:250},
-                    team1 : {x:20, y:50, h:0, w:0, gapx:0, gapy:0 },
-                    team2 : {x:500, y:500, h:0, w:0, gapx:0, gapy:0 },
-                    punt1 : {x:120, y:680, h:105, w:148, gapx:-20, gapy:0 },
-                    punt2 : {x:910, y:680, h:105, w:148, gapx:-20, gapy:0 },
-                    orden : ['Logos','Versus','Puntuacion'],
-
-                },
-                {
-                    back : {image: rutaImg + "estilo_3.png", x:0,y:0,h:1280,w:800}, 
-                    imgPref:"dia_", 
-                    logo1 : {x:209, y:200, h:380, w:380} ,
-                    logo2 :{x:1070, y:600, h:380, w:380},
-                    vs : {x:640, y:400, h:350, w:350},
-                    team1 : {x:558, y:200, h:316, w:287, gapx:-110, gapy:0 },
-                    team2 : {x:180, y:600, h:316, w:287, gapx:-110, gapy:0 },
-                    punt1 : {x:280, y:400, h:63, w:88, gapx:-20, gapy:0 },
-                    punt2 : {x:880, y:400, h:63, w:88, gapx:-20, gapy:0 },
-                    orden : ['Logos','Aristos','Versus','Puntuacion'],
-                },
-                {
-                    back : {image: rutaImg + "estilo_4.png", x:0,y:0,h:1280,w:800}, 
-                    imgPref:"pinups/pinup_", 
-                    logo1 : {x:260, y:420, h:380, w:380} ,
-                    logo2 :{x:1020, y:420, h:380, w:380},
-                    vs : {x:640, y:420, h:250, w:250},
-                    team1 : {x: 104, y:210, h:415, w:325, gapx:-220, gapy:0 },
-                    team2 : {x: 880, y:210, h:415, w:325, gapx:-220, gapy:0 },
-                    punt1 : {x:120, y:700, h:105, w:148, gapx:-20, gapy:0 },
-                    punt2 : {x:910, y:700, h:105, w:148, gapx:-20, gapy:0 },
-                    orden : ['Aristos','Logos','Versus','Puntuacion'],
-                },
-               
-                ]
-
-var Aristos = [ {Id:1, Name:"Mushashi", Image:"mushashi.png"},
-{Id:2, Name:"Wild Bill", Image:"wild_bill.png"},
-{Id:3, Name:"Gata", Image:"gata.png"},
-{Id:4, Name:"Major Lunah", Image:"lunah.png"},
-{Id:5, Name:"Hexx3r", Image:"hexx3r.png"},
-{Id:6, Name:"Parvati", Image:"parvati.png"},
-{Id:7, Name:"8-Ball", Image:"8ball.png"},
-{Id:8, Name:"Maximus", Image:"maximus.png"},
-{Id:9, Name:"Valkyrie", Image:"valkyrie.png"},
-{Id:10, Name:"Hannibal", Image:"hannibal.png"},
-{Id:11, Name:"Laxmee", Image:"laxmee.png"},
-{Id:12, Name:"Señor Massacre", Image:"massacre.png"},
-{Id:13, Name:"Padre Mendoza", Image:"mendoza.png"},
-{Id:14, Name:"Murtair", Image:"murtair.png"},
-{Id:15, Name:"Kozmo", Image:"kozmo.png"},
-{Id:16, Name:"Taowu", Image:"taowu.png"},
-{Id:17, Name:"Dart", Image:"dart.png"},
-{Id:18, Name:"Bixie", Image:"bixie.png"},
-{Id:19, Name:"Prysm", Image:"prysm.png"},
-{Id:20, Name:"Eclypse", Image:"eclypse.png"},
-{Id:21, Name:"Oberon", Image:"oberon.png"},
-{Id:22, Name:"Shona Carano", Image:"shona.png"},
-{Id:23, Name:"Reina Koorie", Image:"koorie.png"},
-{Id:24, Name:"Final Boss", Image:"boss.png"} ,
-{Id:25, Name:"Bachmann", Image:"bachmann.png"} ,
-{Id:26, Name:"Hammerhead", Image:"hammerhead.png"} ,];
-
-var Logos = [{id:1, Name:"Befana's Cats", Image:"logo_befana.png"},
-{id:2, Name:"Greyhounds", Image:"logo_greyhounds.png"},
-{id:3, Name:"Bruni", Image:"logo_bruni.png"},]
 
 //Visible
 
@@ -165,7 +70,7 @@ function loadEstilos(){
         let div_img = document.createElement('div');
         div_img.setAttribute('class','divsmedio');
         let imgA = document.createElement('img');
-        imgA.src=posEstilos[i].back.image;
+        imgA.src=rutaImg + posEstilos[i].back.image;
         imgA.id="estilo_"+i
         imgA.setAttribute('width','50%');
         imgA.setAttribute('onclick', 'selectEstilo('+i+');');
@@ -186,7 +91,7 @@ function loadPuntaciones(){
         let div_img = document.createElement('div');
         div_img.setAttribute('class','divsmedio');
         let imgA = document.createElement('img');
-        imgA.src=posEstilos[i].back.image;
+        imgA.src=rutaImg + posEstilos[i].back.image;
         imgA.id="estilo_"+i
         imgA.setAttribute('width','50%');
         imgA.setAttribute('onclick', 'selectEstilo('+i+');');
@@ -205,7 +110,7 @@ function loadVersus(){
         let div_img = document.createElement('div');
         div_img.setAttribute('class','divsmedio');
         let imgA = document.createElement('img');
-        imgA.src=posVersus[i].image;
+        imgA.src=rutaImg + posVersus[i].image;
         imgA.id="versus_"+i
         imgA.setAttribute('width','30%');
         imgA.setAttribute('onclick', 'selectVersus('+i+');');
@@ -224,7 +129,7 @@ function loadFondos(){
         let div_img = document.createElement('div');
         div_img.setAttribute('class','divsmedio');
         let imgA = document.createElement('img');
-        imgA.src=posFondos[i].image;
+        imgA.src=rutaImg + posFondos[i].image;
         imgA.id="fondo_"+i
         imgA.setAttribute('width','30%');
         imgA.setAttribute('onclick', 'selectFondo('+i+');');
@@ -283,7 +188,7 @@ function selectFondo(id){
             imgA.className = 'nonSelected';
     }
     //eliminamos el fondo
-    document.getElementById('img_id3').src=posFondos[fondo].image;
+    document.getElementById('img_id3').src=rutaImg + posFondos[fondo].image;
     ver('img_id3');
     document.getElementById('id3').value="";
 
@@ -554,7 +459,7 @@ function drawFondo(){
         //Seleccion predefinida 
         if(fondo > -1){
             fondo = estilo;
-            myBackground = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, posFondos[fondo].image, posEstilos[estilo].back.x, posEstilos[estilo].back.y, "image");
+            myBackground = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, rutaImg + posFondos[fondo].image, posEstilos[estilo].back.x, posEstilos[estilo].back.y, "image");
             myBackground.update();
         }
     }
@@ -569,7 +474,7 @@ function drawVersus(){
         let x,y;
         x=posEstilos[estilo].vs.x - posEstilos[estilo].vs.w / 2;
         y=posEstilos[estilo].vs.y - posEstilos[estilo].vs.h / 2; 
-        versusComponent = new component(posEstilos[estilo].vs.w, posEstilos[estilo].vs.h, posVersus[versus].image, x, y, "image");
+        versusComponent = new component(posEstilos[estilo].vs.w, posEstilos[estilo].vs.h, rutaImg +  posVersus[versus].image, x, y, "image");
         versusComponent.update();
     }
 }
@@ -670,7 +575,7 @@ function drawPuntuacion(){
 function drawFront(){
 
     let frontComponent;
-    frontComponent = new component(posEstilos[estilo].front.w, posEstilos[estilo].front.h, posEstilos[estilo].front.image, posEstilos[estilo].front.x, posEstilos[estilo].front.y, "image");
+    frontComponent = new component(posEstilos[estilo].front.w, posEstilos[estilo].front.h, rutaImg +  posEstilos[estilo].front.image, posEstilos[estilo].front.x, posEstilos[estilo].front.y, "image");
     frontComponent.update();
 }
 
