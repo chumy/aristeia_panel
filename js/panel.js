@@ -128,9 +128,9 @@ function GoTo (seccion) {
         alert("Seccion no valida");
         return -1;
     }
-    
-    if (seccion === "logos") {
-        if (estilo === null)
+    if (seccion === "selLogos") {
+        //if (typeof(estilo) == 'undefined')
+        if (estilo == null)
             alert("Debe escoger un estilo");
         else
         {
