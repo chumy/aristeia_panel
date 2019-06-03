@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aristeia :: Generador Paneles</title>
 <link rel="stylesheet" href="styles/random.css">
@@ -12,7 +12,7 @@
 <script src="js/fondos.js"></script>
 </head>
 <body onload="init();">
-	<div class="center"><img class="img_center" src="images/aristeia_logo.png"/>
+	<div class="center"><a href="/aristeia"><img class="img_center" src="images/aristeia_logo.png"/></a>
 	<h1 class="textoPortada" align="center">Generador de Paneles</h1>
 	<div id="content">
 
@@ -30,28 +30,28 @@
 <!-- LOGOS -->
 
 		<div id="selLogos" class="divsfull border_blanco" style="display:none">
-			<h2 class="textoPortada">Selección de Logos</h2>
+			<h2 class="textoPortada">Selección de Logos (opcional)</h2>
 			<div id="logo1" class="divsfull border_verde">
-				<div id="logo1_file" class="divsmedio"> 
-					<h3>Logo Equipo 1:</h3>
+				<div id="logo1_file" class="divsfull"> 
+					<h2 class="textoPortada">Logo Equipo 1:</h2>
 					<input type="file" id="id1" onchange="loadComponente(this.id)">
 				</div>
-				<div id="logo1_selector" class="divsmedio"> 
-					<h2 class="textoPortada">Elige Logos Guardados</h2>
-	 					<button onclick="loadLogos(1)">Logos Disponibles</button>
+				<div id="logo1_selector" class="divsfull"> 
+					<h2>Elige Logos Guardados</h2>
+	 					<button class="button" onclick="loadLogos(1)">Logos Disponibles</button>
 				</div>
 				<div id="div_img_1" class="divsfull">
 				<img src="" id="img_id1" height="200" alt="Image preview..."  style="display:none">
 				</div>
 			</div>
 			<div id="logo2" class="divsfull border_naranja">
-				<div id="logo2_file" class="divsmedio"> 
-				<h3>Logo Equipo 2:</h3>
+				<div id="logo2_file" class="divsfull"> 
+				<h3 class="textoPortada">Logo Equipo 2:</h3>
 				<input type="file" id="id2" onchange="loadComponente(this.id)">
 				</div>
-				<div id="logo2_selector" class="divsmedio"> 
-					<h2 class="textoPortada">Elige Logos Guardados</h2>
-	 					<button onclick="loadLogos(2)">Logos Disponibles</button>
+				<div id="logo2_selector" class="divsfull"> 
+					<h2>Elige Logos Guardados</h2>
+	 					<button class="button" onclick="loadLogos(2)">Logos Disponibles</button>
 				</div>
 				<div id="div_img_2" class="divsfull">
 				<img src="" id="img_id2" alt="Image preview..." height="200" style="display:none">
@@ -70,7 +70,7 @@
 <!-- BACKGROUND -->
 
 		<div id="selBackground" class="divsfull border_blanco" style="display:none">
-			<h2 class="textoPortada">Selección de fondo</h2>
+			<h2 class="textoPortada">Selección de fondo (opcional)</h2>
 			<div id="fondos_disponibles"></div>
 			<div id="background" class="divsfull border_naranja">
 			<h3>Fondo (redimensionado a 1280x800) </h3>
@@ -93,9 +93,9 @@
 <!-- EQUIPOS -->
 
 		<div id="selEquipos" class="divsfull border_blanco" style="display:none">
-			<h2 class="textoPortada">Elige aristos</h2>
-	 		<button onclick="loadSelector(1)">Team 1</button>
-			<button onclick="loadSelector(2)">Team 2</button>
+			<h2 class="textoPortada">Elige aristos (opcional)</h2>
+	 		<button class="button" onclick="loadSelector(1)">Team 1</button>
+			<button class="button" onclick="loadSelector(2)">Team 2</button>
 			<div class="divsfull">
     			<div id="selEquipos_siguiente" class="divsmedio">
     			    <button class="button" onclick="GoTo('selVersus')">Siguiente</button>
@@ -109,7 +109,7 @@
 <!-- VERSUS -->
 
 		<div id="selVersus" class="divsfull border_blanco" style="display:none">
-			<h2 class="textoPortada">Selección de tipografia Vs</h2>
+			<h2 class="textoPortada">Selección de tipografia Vs (opcional)</h2>
 			<div id="versus_disponibles"></div>
 			<div class="divsfull" >
     			<div id="versus_siguiente" class="divsmedio">
@@ -124,81 +124,86 @@
 <!-- PUNTUACION -->
 
 		<div id="selPuntuacion" class="divsfull border_blanco" style="display:none">
-			<h2 class="textoPortada">Puntuación</h2>
+			<h2 class="textoPortada">Puntuación (opcional)</h2>
 			<div id="puntuaciones_disponibles">
-				<div class="divsmedio" >
-    			<span>Equipo 1</span>
-    			<span>Puntuacion:
-    			<select id='punt1' onchange="setPunt1(this[this.selectedIndex].value);">
-    				<option value="-1">Seleccionar</option>
-    				<option value="0">0</option>
-    				<option value="1">1</option>
-    				<option value="2">2</option>
-    				<option value="3">3</option>
-    				<option value="4">4</option>
-    				<option value="5">5</option>
-    				<option value="6">6</option>
-    				<option value="7">7</option>
-    				<option value="8">8</option>
-    				<option value="9">9</option>
-    				<option value="10">10</option>
-    				<option value="11">11</option>
-    				<option value="12">12</option>
-    			</select></span>
-    			<span>Frags:
-    			<select id='frag1' onchange="setFrag1(this[this.selectedIndex].value);">
-    				<option value="-1">Seleccionar</option>
-    				<option value="0">0</option>
-    				<option value="1">1</option>
-    				<option value="2">2</option>
-    				<option value="3">3</option>
-    				<option value="4">4</option>
-    				<option value="5">5</option>
-    				<option value="6">6</option>
-    				<option value="7">7</option>
-    				<option value="8">8</option>
-    				<option value="9">9</option>
-    				<option value="10">10</option>
-    				<option value="11">11</option>
-    				<option value="12">12</option>
-    			</select></span>
+				<div class="divsmedio border_verde" >
+    				<h3>Equipo 1</h3>
+	    			<div class="divsmedio ">
+		    			<span>Puntuación:</span>
+		    			<select id='punt1' onchange="setPunt1(this[this.selectedIndex].value);">
+		    				<option value="-1">Seleccionar</option>
+		    				<option value="0">0</option>
+		    				<option value="1">1</option>
+		    				<option value="2">2</option>
+		    				<option value="3">3</option>
+		    				<option value="4">4</option>
+		    				<option value="5">5</option>
+		    				<option value="6">6</option>
+		    				<option value="7">7</option>
+		    				<option value="8">8</option>
+		    				<option value="9">9</option>
+		    				<option value="10">10</option>
+		    				<option value="11">11</option>
+		    				<option value="12">12</option>
+		    			</select>
+		    			<span>Frags:</span>
+		    			<select id='frag1' onchange="setFrag1(this[this.selectedIndex].value);">
+		    				<option value="-1">Seleccionar</option>
+		    				<option value="0">0</option>
+		    				<option value="1">1</option>
+		    				<option value="2">2</option>
+		    				<option value="3">3</option>
+		    				<option value="4">4</option>
+		    				<option value="5">5</option>
+		    				<option value="6">6</option>
+		    				<option value="7">7</option>
+		    				<option value="8">8</option>
+		    				<option value="9">9</option>
+		    				<option value="10">10</option>
+		    				<option value="11">11</option>
+		    				<option value="12">12</option>
+		    			</select>
+	    			</div>
     			</div>
-    			<div class="divsmedio" >
-    			<span>Equipo 2</span>
-    			<span>Puntuacion:
-    			<select id='punt2' onchange="setPunt2(this[this.selectedIndex].value);">
-    				<option value="-1">Seleccionar</option>
-    				<option value="0">0</option>
-    				<option value="1">1</option>
-    				<option value="2">2</option>
-    				<option value="3">3</option>
-    				<option value="4">4</option>
-    				<option value="5">5</option>
-    				<option value="6">6</option>
-    				<option value="7">7</option>
-    				<option value="8">8</option>
-    				<option value="9">9</option>
-    				<option value="10">10</option>
-    				<option value="11">11</option>
-    				<option value="12">12</option>
-    			</select></span>
-    			<span>Frags:
-    			<select id='frag2' onchange="setFrag2(this[this.selectedIndex].value);">
-    				<option value="-1">Seleccionar</option>
-    				<option value="0">0</option>
-    				<option value="1">1</option>
-    				<option value="2">2</option>
-    				<option value="3">3</option>
-    				<option value="4">4</option>
-    				<option value="5">5</option>
-    				<option value="6">6</option>
-    				<option value="7">7</option>
-    				<option value="8">8</option>
-    				<option value="9">9</option>
-    				<option value="10">10</option>
-    				<option value="11">11</option>
-    				<option value="12">12</option>
-    			</select></span>
+
+    			<div class="divsmedio border_naranja" >
+	    			<h3>Equipo 2</h3>
+		    			<div class="divsmedio ">
+		    			<span>Puntuación:
+		    			<select id='punt2' onchange="setPunt2(this[this.selectedIndex].value);">
+		    				<option value="-1">Seleccionar</option>
+		    				<option value="0">0</option>
+		    				<option value="1">1</option>
+		    				<option value="2">2</option>
+		    				<option value="3">3</option>
+		    				<option value="4">4</option>
+		    				<option value="5">5</option>
+		    				<option value="6">6</option>
+		    				<option value="7">7</option>
+		    				<option value="8">8</option>
+		    				<option value="9">9</option>
+		    				<option value="10">10</option>
+		    				<option value="11">11</option>
+		    				<option value="12">12</option>
+		    			</select></span>
+		    			<span>Frags:
+		    			<select id='frag2' onchange="setFrag2(this[this.selectedIndex].value);">
+		    				<option value="-1">Seleccionar</option>
+		    				<option value="0">0</option>
+		    				<option value="1">1</option>
+		    				<option value="2">2</option>
+		    				<option value="3">3</option>
+		    				<option value="4">4</option>
+		    				<option value="5">5</option>
+		    				<option value="6">6</option>
+		    				<option value="7">7</option>
+		    				<option value="8">8</option>
+		    				<option value="9">9</option>
+		    				<option value="10">10</option>
+		    				<option value="11">11</option>
+		    				<option value="12">12</option>
+		    			</select></span>
+		    		</div>
     			</div>
 			</div>
 			<div class="divsfull" >
@@ -218,7 +223,7 @@
 			<a id="download" download="encuentro.png"><button onclick="updatePanel()">Generar Panel</button></a-->
 			<h2 class="textoPortada">Genera Panel</h2>
 			<span>Pulsar otra vez si no se generan algún componente</span>
-			<button onclick="updatePanel();">Generar Panel</button>
+			<button class="button" onclick="updatePanel();">Generar Panel</button>
 			<div id="logos_volver" class="divsmedio">
 			    <button class="button" onclick="GoTo('selPuntuacion')">Volver</button>
 			</div>
@@ -227,7 +232,7 @@
 		<div id="myCanvas" class="divsfull border_blanco"  style="display:none">
 		        
 				<h2><a id="download" download="encuentro.png">
-				<button type="button" onClick="download()">Download</button>
+				<button type="button" class="button" onClick="download()">Download</button>
 				</a></h2>
 		</div>
 	</div>

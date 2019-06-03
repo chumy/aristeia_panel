@@ -6,7 +6,7 @@ var logo2;
 var modal;
 var estilo;
 var versus;
-var fondo;
+var fondo=-1;
 
 var frag1=-1;
 var frag2=-1;
@@ -271,8 +271,9 @@ function loadLogos(team){
         imgA.src=rutaLogo + Logos[i].Image;
         imgA.setAttribute('onclick', 'addLogo('+i+', '+team+');');
         imgA.setAttribute('class', 'nonSelected listalogos');
+        imgA.setAttribute('alt', Logos[i].Name);
         
-        if (logo == i)  { imgA.setAttribute('class', 'selected listalogos') }
+        if (logo == i )  { imgA.setAttribute('class', 'selected listalogos') }
     
         //div.appendChild(imgA);
         modal(imgA,'append');
@@ -457,11 +458,11 @@ function drawFondo(){
     else
     {
         //Seleccion predefinida 
-        if(fondo > -1){
-            fondo = estilo;
-            myBackground = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, rutaImg + posFondos[fondo].image, posEstilos[estilo].back.x, posEstilos[estilo].back.y, "image");
-            myBackground.update();
-        }
+        if(fondo == -1){fondo = estilo;}
+        
+        myBackground = new component(posEstilos[estilo].back.h, posEstilos[estilo].back.w, rutaImg + posFondos[fondo].image, posEstilos[estilo].back.x, posEstilos[estilo].back.y, "image");
+        myBackground.update();
+    
     }
 
 }
