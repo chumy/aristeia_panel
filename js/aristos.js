@@ -23,5 +23,7 @@ var Aristos = [ {Id:1, Name:"Mushashi", Image:"mushashi.png"},
 {Id:23, Name:"Reina Koorie", Image:"koorie.png"},
 {Id:24, Name:"Final Boss", Image:"boss.png"} ,
 {Id:25, Name:"Bachmann", Image:"bachmann.png"} ,
-{Id:26, Name:"Hammerhead", Image:"hammerhead.png"} ,];
+{Id:26, Name:"Hammerhead", Image:"hammerhead.png"} ,
+{Id:27, Name:"Gaia", Image:"gaia.png"} ,
+{Id:28, Name:"Fiddler", Image:"fiddler.png"} ,];
 

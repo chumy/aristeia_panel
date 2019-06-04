@@ -1,4 +1,8 @@
 
+@font-face {
+    font-family: 'SFSportsNight';
+    src: url('/SFSportsNight.ttf');
+}
 
 canvas {
     border:1px solid #d3d3d3;

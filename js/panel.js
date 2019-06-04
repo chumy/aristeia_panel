@@ -272,6 +272,7 @@ function loadLogos(team){
         imgA.setAttribute('onclick', 'addLogo('+i+', '+team+');');
         imgA.setAttribute('class', 'nonSelected listalogos');
         imgA.setAttribute('alt', Logos[i].Name);
+        imgA.setAttribute('title', Logos[i].Name);
         
         if (logo == i )  { imgA.setAttribute('class', 'selected listalogos') }
     
@@ -368,6 +369,21 @@ function cleanCanvas() {
 
 }
 
+function drawLogoText(text,x,y)
+{
+
+    var context = myCanvasArea.context;
+    context.font   = '120px SFSportsNight';
+    context.strokeStyle = 'black';
+    context.lineWidth = 20;
+    context.strokeText(text, x, y);
+    context.fillStyle = 'white';
+    context.fillText(text, x, y)
+    
+}
+
+ 
+
 // Carga un componente en el canvas
 function component(width, height, color, x, y, type) {
     this.type = type;
@@ -406,11 +422,12 @@ function component(width, height, color, x, y, type) {
 }
 
 //Actualizar el canvas
-function updatePanel() {  
+function updatePanel() { 
+    ocultar('modalContent');
+    ver('myCanvas'); 
     cleanCanvas() ;
 
     drawFondo();
-
     for (var i=0;i<posEstilos[estilo].orden.length;i++)
     {
         switch(posEstilos[estilo].orden[i]) {
@@ -433,8 +450,7 @@ function updatePanel() {
     
     }
 
-    ocultar('modalContent');
-	ver('myCanvas');
+
 
 
 	
