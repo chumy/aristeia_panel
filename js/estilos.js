@@ -44,8 +44,8 @@ var posEstilos = [ {
                     vs : {x:640, y:420, h:250, w:250},
                     team1 : {x: 104, y:210, h:415, w:325, gapx:-220, gapy:0 },
                     team2 : {x: 880, y:210, h:415, w:325, gapx:-220, gapy:0 },
-                    punt1 : {x:60, y:700, h:105, w:148, gapx:-20, gapy:0 ,size:120 },
-                    punt2 : {x:860, y:700, h:105, w:148, gapx:-20, gapy:0 ,size:120 },
+                    punt1 : {x:20, y:700, h:105, w:148, gapx:-20, gapy:0 ,size:120 },
+                    punt2 : {x:800, y:700, h:105, w:148, gapx:-20, gapy:0 ,size:120 },
                     orden : ['Aristos','Logos','Versus','Puntuacion'],
                 },
                 ]

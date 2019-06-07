@@ -329,8 +329,11 @@ function addAristoTeam(id, team){
     selEquipo1=lista;
     else
     selEquipo2=lista;
-	
-    loadSelector(team);
+	if (lista.length < 4)
+    {
+        loadSelector(team);
+    }else { ocultar('myModal');}
+
 }
 
 //Asignacion de Logo
@@ -604,9 +607,9 @@ function drawPuntuacion()
         size=posEstilos[estilo].punt2.size;
         x = posEstilos[estilo].punt2.x ;
         y = posEstilos[estilo].punt2.y + size / 2 ;
-        if(punt2.length=1) {text=' '+punt1}
+        if(punt2.length=1) {text=' '+punt2}
         drawLogoText(text,x,y,size,'black','white');
-        if (frag1 > -1)
+        if (frag2 > -1)
         {
             // Guion
             x = posEstilos[estilo].punt2.x  ;
@@ -620,7 +623,7 @@ function drawPuntuacion()
             x = posEstilos[estilo].punt2.x  ;
             y = posEstilos[estilo].punt2.y + size / 2 ;
             pos=(2*size+ size*0.2 ) + x;
-            drawLogoText(frag1,pos,y,size,'red','white');
+            drawLogoText(frag2,pos,y,size,'red','white');
         }
     }
 
