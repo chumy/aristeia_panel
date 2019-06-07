@@ -20,17 +20,20 @@ var rutaImg = 'images/';
 var rutaLogo = rutaImg + 'logos/';
 
 
+////////////////////////////////////////////////////////////
+//              ACCIONES DE Visualizacion
+////////////////////////////////////////////////////////////
+
 
 //Visible
-
 function ver(id){
 	document.getElementById(id).style="display:block";
 }
-
+//Oculto
 function ocultar(id){
 	document.getElementById(id).style="display:none";
 }
-
+//Logia de secciones
 function GoTo (seccion) {
     if (secciones.indexOf(seccion) < 0)
     {
@@ -55,13 +58,32 @@ function GoTo (seccion) {
     }
 }
 
+//Ocultar todas las secciones
 function ocultarTodas() {
     for (var i=0;i<secciones.length;i++)
         ocultar(secciones[i]);
 }
 
+//Ventana Modal
+function modal(message, tipo){
+    let div = document.getElementById('modalContent');
+    if (tipo == 'append')
+    {     
+        div.appendChild(message);
+    }
+    else{
+        div.innerHTML=message;
+    }
+    ver('modalContent');
+    ver('myModal');
+}
 
 
+////////////////////////////////////////////////////////////
+//              ACCIONES DE CARGA DE SECCIONES
+////////////////////////////////////////////////////////////
+
+//Carga de seccion Estilos
 function loadEstilos(){
     let div=document.getElementById('estilos_disponibles');
     
@@ -83,6 +105,7 @@ function loadEstilos(){
     document.getElementById("btnEstilo").disabled = true;
 }
 
+// Carga Seccion Puntuaciones
 function loadPuntaciones(){
     let div=document.getElementById('puntuaciones_disponibles');
     
@@ -101,6 +124,8 @@ function loadPuntaciones(){
     }
     
 }
+
+// Carga seccion Versus
 
 function loadVersus(){
     let div=document.getElementById('versus_disponibles');
@@ -121,6 +146,7 @@ function loadVersus(){
     
 }
 
+// Carga seccion Fondos
 function loadFondos(){
     let div=document.getElementById('fondos_disponibles');
     
@@ -140,14 +166,14 @@ function loadFondos(){
     
 }
 
-function init(){
-    loadEstilos();
-    loadVersus();
-    loadFondos();
-}
+
+
+
+////////////////////////////////////////////////////////////
+//              ACCIONES DE SELECCION
+////////////////////////////////////////////////////////////
 
 //Seleccion de estilo
-
 function selectEstilo(id){
 	estilo=id;
 	
@@ -164,6 +190,7 @@ function selectEstilo(id){
 	//preloadImages(id);
 }
 
+//Seleccion Versus
 function selectVersus(id){
 	versus = id;
 	for(var i=0;i<posVersus.length;i++)
@@ -177,6 +204,7 @@ function selectVersus(id){
 	
 }
 
+//Seleccion Fondo
 function selectFondo(id){
     fondo = id;
     for(var i=0;i<posFondos.length;i++)
@@ -194,33 +222,8 @@ function selectFondo(id){
 
 }
 
-function setPunt1(id){
-    punt1 = id;
-}
 
-function setFrag1(id){
-    frag1 = id;
-}
-
-function setPunt2(id){
-    punt2 = id;
-}
-
-function setFrag2(id){
-    frag2 = id;
-}
-
-function preloadImages(id){
-    for (var i=0;i<Aristos.length;i++)
-    {
-        let imgA = document.createElement('img');
-        imgA.src=rutaImg + posEstilos[id].imgPref + Aristos[i].Image;
-        imgA.setAttribute('style', 'display:none');
-        
-    }
-}
-
-// Generar selector de aristos
+// Generar selector de aristos por equipo
 function loadSelector(team){
     
     let lista;
@@ -252,6 +255,7 @@ function loadSelector(team){
     
 }
 
+//Selector  de logos 
 function loadLogos(team){
     
     let lista;
@@ -285,6 +289,23 @@ function loadLogos(team){
     
 }
 
+//Asignacion de Puntuacion
+function setPunt1(id){
+    punt1 = id;
+}
+function setPunt2(id){
+    punt2 = id;
+}
+
+// Asignacion de Frags
+function setFrag1(id){
+    frag1 = id;
+}
+function setFrag2(id){
+    frag2 = id;
+}
+
+
 // A単adir Aristo al equipo
 function addAristoTeam(id, team){
     let lista;
@@ -312,6 +333,7 @@ function addAristoTeam(id, team){
     loadSelector(team);
 }
 
+//Asignacion de Logo
 function addLogo(id,team)
 {
     if (team == 1 )
@@ -326,6 +348,8 @@ function addLogo(id,team)
     ver('img_id'+team);
      
 }
+
+
 
 //************************//
 // Funcionalidad canvas			
@@ -369,18 +393,6 @@ function cleanCanvas() {
 
 }
 
-function drawLogoText(text,x,y)
-{
-
-    var context = myCanvasArea.context;
-    context.font   = '120px SFSportsNight';
-    context.strokeStyle = 'black';
-    context.lineWidth = 20;
-    context.strokeText(text, x, y);
-    context.fillStyle = 'white';
-    context.fillText(text, x, y)
-    
-}
 
  
 
@@ -425,6 +437,8 @@ function component(width, height, color, x, y, type) {
 function updatePanel() { 
     ocultar('modalContent');
     ver('myCanvas'); 
+    drawLogoText('1',0,0);
+
     cleanCanvas() ;
 
     drawFondo();
@@ -446,16 +460,23 @@ function updatePanel() {
             case 'Puntuacion':
                 drawPuntuacion();
                 break; 
-        }
-    
+        }   
     }
-
-
-
+/*
+                drawLogos();
+            
+                drawAristos();
+              
+                drawVersus();
+               
+                //drawFront();
+                
+                drawPuntuacion();*/
 
 	
 }
 
+//Dibuja el Fondo en el canvas
 function drawFondo(){
     let logo;
     let preview;
@@ -496,6 +517,22 @@ function drawVersus(){
     }
 }
 
+function drawLogoText(text,x,y,size = 120,color='white', stroke = 'black' )
+{
+
+    let context = myCanvasArea.context;
+    let fontSize = size+'px ';
+    let fontFamily = '"SFSportsNight"';
+    context.font   = fontSize + fontFamily;
+    context.lineCap = "round";
+    context.strokeStyle = stroke;
+    context.lineWidth = 20;
+    context.strokeText(text, x, y);
+    context.fillStyle = color;
+    context.fillText(text, x, y)
+    
+}
+
 
 //Carga Aristos en el canvas
 function drawAristos (){
@@ -532,7 +569,63 @@ function drawAristos (){
 }
 
 //puntuacion
-function drawPuntuacion(){
+function drawPuntuacion()
+{
+    let puntComponent,x,y,text;
+    if (punt1 > -1)
+    {
+        //let imagen = rutaImg + punt1 + '.png';
+        size=posEstilos[estilo].punt1.size;
+        x = posEstilos[estilo].punt1.x ;
+        y = posEstilos[estilo].punt1.y + size / 2 ;
+        if(punt1.length=1) {text=' '+punt1}
+        drawLogoText(text,x,y,size,'black','white');
+        if (frag1 > -1)
+        {
+            // Guion
+            x = posEstilos[estilo].punt1.x  ;
+            y = posEstilos[estilo].punt1.y + size / 2 ;
+            pos= (size + size*0.4 ) + x;
+            drawLogoText('-',pos,y,size,'black','white');
+            
+
+            // frags
+           
+            x = posEstilos[estilo].punt1.x  ;
+            y = posEstilos[estilo].punt1.y + size / 2 ;
+            pos=(2*size+ size*0.2 ) + x;
+            drawLogoText(frag1,pos,y,size,'red','white');
+        }
+    }
+
+    if (punt2 > -1)
+    {
+
+        size=posEstilos[estilo].punt2.size;
+        x = posEstilos[estilo].punt2.x ;
+        y = posEstilos[estilo].punt2.y + size / 2 ;
+        if(punt2.length=1) {text=' '+punt1}
+        drawLogoText(text,x,y,size,'black','white');
+        if (frag1 > -1)
+        {
+            // Guion
+            x = posEstilos[estilo].punt2.x  ;
+            y = posEstilos[estilo].punt2.y + size / 2 ;
+            pos= (size + size*0.4 ) + x;
+            drawLogoText('-',pos,y,size,'black','white');
+            
+
+            // frags
+           
+            x = posEstilos[estilo].punt2.x  ;
+            y = posEstilos[estilo].punt2.y + size / 2 ;
+            pos=(2*size+ size*0.2 ) + x;
+            drawLogoText(frag1,pos,y,size,'red','white');
+        }
+    }
+
+}
+function drawPuntuacion2(){
     let puntComponent,x,y;
     if (punt1 > -1)
     {
@@ -588,7 +681,7 @@ function drawPuntuacion(){
 
 }
 
-//Carga Versus en el canvas
+//Carga front
 function drawFront(){
 
     let frontComponent;
@@ -686,6 +779,23 @@ download.setAttribute("href", image);
 }
 
 
+function init(){
+    loadEstilos();
+    loadVersus();
+    loadFondos();
+    ocultar('preloadFont');
+}
+
+function preloadImages(id){
+    for (var i=0;i<Aristos.length;i++)
+    {
+        let imgA = document.createElement('img');
+        imgA.src=rutaImg + posEstilos[id].imgPref + Aristos[i].Image;
+        imgA.setAttribute('style', 'display:none');
+        
+    }
+}
+
 
 function fileValidation(filename){
    
@@ -698,15 +808,3 @@ function fileValidation(filename){
     }
 }
 
-function modal(message, tipo){
-    let div = document.getElementById('modalContent');
-    if (tipo == 'append')
-    {     
-        div.appendChild(message);
-    }
-    else{
-        div.innerHTML=message;
-    }
-    ver('modalContent');
-    ver('myModal');
-}

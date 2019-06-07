@@ -6,8 +6,8 @@ var posEstilos = [ {
                     vs : {x:640, y:400, h:250, w:250},
                     team1 : {x:115, y:100, h:174, w:150, gapx:0, gapy:0 },
                     team2 : {x:715, y:700, h:174, w:150, gapx:0, gapy:0 },
-                    punt1 : {x:120, y:280, h:105, w:148, gapx:-20, gapy:0 },
-                    punt2 : {x:910, y:520, h:105, w:148, gapx:-20, gapy:0 },
+                    punt1 : {x:100, y:280, h:105, w:148, gapx:-20, gapy:0,size:120 },
+                    punt2 : {x:880, y:520, h:105, w:148, gapx:-20, gapy:0,size:120 },
                     orden : ['Aristos','Logos','Versus','Puntuacion'],
                 },
                 
@@ -19,8 +19,8 @@ var posEstilos = [ {
                     vs : {x:640, y:400, h:250, w:250},
                     team1 : {x:20, y:50, h:0, w:0, gapx:0, gapy:0 },
                     team2 : {x:500, y:500, h:0, w:0, gapx:0, gapy:0 },
-                    punt1 : {x:120, y:680, h:105, w:148, gapx:-20, gapy:0 },
-                    punt2 : {x:910, y:680, h:105, w:148, gapx:-20, gapy:0 },
+                    punt1 : {x:60, y:680, h:105, w:148, gapx:-20, gapy:0,size:120  },
+                    punt2 : {x:860, y:680, h:105, w:148, gapx:-20, gapy:0,size:120  },
                     orden : ['Logos','Versus','Puntuacion'],
 
                 },
@@ -32,8 +32,8 @@ var posEstilos = [ {
                     vs : {x:640, y:400, h:350, w:350},
                     team1 : {x:558, y:200, h:316, w:287, gapx:-110, gapy:0 },
                     team2 : {x:180, y:600, h:316, w:287, gapx:-110, gapy:0 },
-                    punt1 : {x:280, y:400, h:63, w:88, gapx:-20, gapy:0 },
-                    punt2 : {x:880, y:400, h:63, w:88, gapx:-20, gapy:0 },
+                    punt1 : {x:240, y:390, h:63, w:88, gapx:-20, gapy:0,size:70 },
+                    punt2 : {x:820, y:390, h:63, w:88, gapx:-20, gapy:0,size:70  },
                     orden : ['Logos','Aristos','Versus','Puntuacion'],
                 },
                 {
@@ -44,8 +44,8 @@ var posEstilos = [ {
                     vs : {x:640, y:420, h:250, w:250},
                     team1 : {x: 104, y:210, h:415, w:325, gapx:-220, gapy:0 },
                     team2 : {x: 880, y:210, h:415, w:325, gapx:-220, gapy:0 },
-                    punt1 : {x:120, y:700, h:105, w:148, gapx:-20, gapy:0 },
-                    punt2 : {x:910, y:700, h:105, w:148, gapx:-20, gapy:0 },
+                    punt1 : {x:60, y:700, h:105, w:148, gapx:-20, gapy:0 ,size:120 },
+                    punt2 : {x:860, y:700, h:105, w:148, gapx:-20, gapy:0 ,size:120 },
                     orden : ['Aristos','Logos','Versus','Puntuacion'],
                 },
                 ]
